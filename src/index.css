@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  background-color: #0b1121; /* Dark blue from the image */
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+input {
+  width: 100%;
+  padding: 12px 16px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  border-radius: 20px; /* rounded inputs like in the image */
+  border: none;
+  background-color: #ffffff;
+  color: #0b1121;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: 2px solid #3b82f6;
+}
+
+input::placeholder {
+  color: #9ca3af;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+button.primary-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background-color: #1e3a8a; /* darker blue button */
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+button.primary-btn:hover {
+  background-color: #2563eb;
+}
+
+/* Auth Layout Styles */
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.auth-image-section {
+  flex: 1;
+  background-image: url('./assets/loginsignupbg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .auth-image-section {
+    display: block;
+  }
+}
+
+.auth-form-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background-color: #0b1121;
+}
+
+.auth-form-wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.auth-subtitle {
+  color: #9ca3af;
+  margin-bottom: 32px;
+  font-size: 14px;
+}
+
+.password-container {
+  position: relative;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 16px;
+  top: 20px; /* Adjust based on input padding + margin */
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-links {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #cbd5e1;
+  margin-bottom: 24px;
+  margin-top: -10px; /* Pull up a bit closer to password */
+}
+
+.auth-links a {
+  color: #cbd5e1;
+  text-decoration: none;
+}
+
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+.auth-links label {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.auth-links input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.auth-footer {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.auth-footer a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-footer a:hover {
+  text-decoration: underline;
+}

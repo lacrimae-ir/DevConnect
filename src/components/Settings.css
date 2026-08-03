@@ -1,0 +1,298 @@
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  background-color: #060913;
+  color: #f3f4f6;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+.settings-topbar {
+  padding: 15px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  letter-spacing: 1px;
+}
+
+.settings-body {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* Sidebar (reuse styles from Chat mostly) */
+.settings-sidebar {
+  width: 70px;
+  background-color: #0b1120;
+  border-right: 1px solid #1e293b;
+  border-top: 1px solid #1e293b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+  gap: 30px;
+}
+
+.settings-sidebar-icon {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.2s;
+  object-fit: contain;
+}
+
+.settings-sidebar-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Middle Panel */
+.settings-menu-panel {
+  width: 320px;
+  background-color: #0b1120;
+  border-right: 1px solid #1e293b;
+  border-top: 1px solid #1e293b;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.settings-menu-header {
+  padding: 25px 20px 15px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #f8fafc;
+}
+
+.settings-search-container {
+  padding: 0 20px 20px;
+}
+
+.settings-search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.settings-search-icon {
+  position: absolute;
+  left: 12px;
+  color: #94a3b8;
+  width: 14px;
+  height: 14px;
+}
+
+.settings-search-input {
+  width: 100%;
+  margin: 0;
+  background-color: transparent;
+  border: 1px solid #1e293b;
+  border-radius: 20px;
+  padding: 8px 12px 8px 34px;
+  color: #e2e8f0;
+  outline: none;
+  font-size: 13px;
+  transition: border-color 0.2s;
+}
+
+.settings-menu-list {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
+  gap: 15px;
+}
+
+.settings-menu-item {
+  padding: 15px;
+  border: 1px solid #1e293b;
+  border-radius: 2px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.settings-menu-item.active {
+  background-color: rgba(30, 41, 59, 0.5);
+  border-color: #2b3a5a;
+}
+
+.settings-logout-btn {
+  margin: auto 20px 30px;
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.settings-logout-btn:hover {
+  background-color: #dc2626;
+}
+
+/* Main Content Area */
+.settings-main-area {
+  flex: 1;
+  background-color: #060913;
+  border-top: 1px solid #1e293b;
+  padding: 30px 40px;
+  overflow-y: auto;
+}
+
+.settings-main-header {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+.settings-section-title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 30px 0 15px;
+}
+
+.settings-card {
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: transparent;
+}
+
+.settings-card-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.settings-avatar-large {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #d1d5db;
+  object-fit: cover;
+}
+
+.settings-username-input {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 16px;
+  outline: none;
+  margin: 0;
+  padding: 0;
+}
+
+.settings-btn {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.2s;
+}
+.settings-btn:hover {
+  background-color: #4338ca;
+}
+.settings-file-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.settings-banner-card {
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+  background-color: #1e293b;
+}
+.settings-banner-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.settings-banner-btn-wrapper {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+
+.settings-bio-textarea {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 15px;
+  color: #e2e8f0;
+  font-size: 14px;
+  resize: vertical;
+  min-height: 100px;
+  outline: none;
+}
+.settings-bio-textarea:focus {
+  border-color: #4f46e5;
+}
+
+.settings-skills-container {
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  min-height: 80px;
+  align-items: flex-start;
+}
+
+.settings-skill-pill {
+  background-color: #4f46e5;
+  color: white;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-skill-remove {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+}
+
+.settings-skill-input {
+  background: transparent;
+  border: none;
+  color: white;
+  outline: none;
+  font-size: 14px;
+  padding: 5px;
+  min-width: 120px;
+  margin: 0;
+}
