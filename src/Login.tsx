@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { AuthLayout } from "./components/AuthLayout";
+import { supabase } from "./supabase";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -17,14 +18,17 @@ export default function Login() {
     setSuccess("");
 
     try {
-      const result = await window.ipcRenderer.invoke('login', { email, password });
+      const { data, error: supabaseError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
       
-      if (result.success) {
+      if (supabaseError) {
+        setError(supabaseError.message);
+      } else if (data.user) {
         setSuccess("Login successful!");
-        localStorage.setItem('user', JSON.stringify(result.user));
+        localStorage.setItem('user', JSON.stringify(data.user));
         navigate('/chat');
-      } else {
-        setError(result.error || "Login failed");
       }
     } catch (err) {
       setError("An error occurred connecting to the server.");

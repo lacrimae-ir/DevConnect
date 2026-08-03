@@ -47,9 +47,9 @@ const initDb = async () => {
   try {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS users (
-        id SERIAL PRIMARY KEY,
+        id VARCHAR(255) PRIMARY KEY,
         email VARCHAR(255) UNIQUE NOT NULL,
-        password VARCHAR(255) NOT NULL
+        password VARCHAR(255)
       );
     `);
     
@@ -64,8 +64,8 @@ const initDb = async () => {
     await pool.query(`
       CREATE TABLE IF NOT EXISTS messages (
         id SERIAL PRIMARY KEY,
-        sender_id INTEGER REFERENCES users(id),
-        receiver_id INTEGER REFERENCES users(id),
+        sender_id VARCHAR(255) REFERENCES users(id),
+        receiver_id VARCHAR(255) REFERENCES users(id),
         text TEXT NOT NULL,
         is_read BOOLEAN DEFAULT false,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -261,10 +261,21 @@ const broadcastUsers = async () => {
 io.on('connection', (socket) => {
   console.log('A user connected:', socket.id);
   
-  socket.on('user_connected', (userId) => {
-    activeUsers.set(socket.id, userId);
-    broadcastUsers();
-    broadcastOnlineUsers();
+  socket.on('user_connected', async (userData) => {
+    // Sync user to local database if they don't exist yet
+    if (userData && userData.id) {
+      try {
+        await pool.query(
+          'INSERT INTO users (id, email, password) VALUES ($1, $2, $3) ON CONFLICT (id) DO NOTHING',
+          [userData.id, userData.email || '', '']
+        );
+      } catch (err) {
+        console.error('Error syncing user', err);
+      }
+      activeUsers.set(socket.id, userData.id);
+      broadcastUsers();
+      broadcastOnlineUsers();
+    }
   });
 
   socket.on('send_message', async (data) => {

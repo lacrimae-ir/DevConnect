@@ -55,7 +55,7 @@ const Chat = () => {
 
     // Initialize Socket
     socketRef.current = io('http://localhost:5000');
-    socketRef.current.emit('user_connected', user.id);
+    socketRef.current.emit('user_connected', { id: user.id, email: user.email });
 
     // Listen for new messages
     socketRef.current.on('receive_message', (msg: Message) => {

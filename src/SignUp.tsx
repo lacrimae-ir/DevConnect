@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff } from "lucide-react";
 import { AuthLayout } from "./components/AuthLayout";
+import { supabase } from "./supabase";
 
 export default function SignUp() {
   const [email, setEmail] = useState("");
@@ -24,13 +25,16 @@ export default function SignUp() {
     }
 
     try {
-      const result = await window.ipcRenderer.invoke('signup', { email, password });
+      const { data, error: supabaseError } = await supabase.auth.signUp({
+        email,
+        password,
+      });
       
-      if (result.success) {
+      if (supabaseError) {
+        setError(supabaseError.message);
+      } else {
         setSuccess("Account created successfully! Redirecting...");
         setTimeout(() => navigate("/login"), 1500);
-      } else {
-        setError(result.error || "Sign up failed");
       }
     } catch (err) {
       setError("An error occurred connecting to the server.");
